@@ -1,0 +1,10 @@
+USE sincerely;
+
+DROP TABLE IF EXISTS user;
+
+CREATE TABLE user (
+   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   email TEXT NOT NULL,
+   password TEXT NOT NULL,
+   created_at TIMESTAMP NOT NULL DEFAULT NOW()
+) ENGINE=InnoDB;

@@ -1,10 +1,14 @@
-var server = require("./server");
+var connect = require('connect');
+var auth = require("./auth");
 var router = require("./router");
-var requestHandlers = require("./requestHandlers");
 
-var handle = {}
-handle['/'] = requestHandlers.start;
-handle['/login'] = requestHandlers.login;
-handle['/create'] = requestHandlers.create;
-
-server.start(router.route, handle)
+var server = connect.createServer(
+    //connect.logger({format: ':method :url'}),
+    connect.cookieParser(),
+    connect.session({secret: "gonzo", cookie: {maxage: 6000}}),
+    connect.bodyParser(),
+    connect.favicon(),
+    auth.authCheck,
+    router.route
+);
+server.listen(8000);

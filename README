@@ -1,1 +1,10 @@
 Node.js API shell.
+
+DB access needs a lot of cleanup. If you go to /create then /login, you should be OK. But restarting the server and trying same login, and it will not work currently >=\
+
+Also, still no unit tests.
+
+Depends:
+    npm install connect
+    npm install nodeunit
+    npm install mysql
